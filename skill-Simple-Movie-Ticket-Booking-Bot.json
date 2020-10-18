@@ -1,0 +1,497 @@
+{
+  "intents": [
+    {
+      "intent": "book_tickets",
+      "examples": [
+        {
+          "text": "book movie tickets"
+        },
+        {
+          "text": "I want to see a movie"
+        },
+        {
+          "text": "I would like to go to the movies"
+        },
+        {
+          "text": "make movie reservations"
+        },
+        {
+          "text": "Pls book tickets to a movie"
+        },
+        {
+          "text": "reserve some seats for a movie"
+        },
+        {
+          "text": "suggest some movies"
+        }
+      ],
+      "description": "Ask the bot to book a tickets to a movie"
+    },
+    {
+      "intent": "greeting",
+      "examples": [
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hello Dude"
+        },
+        {
+          "text": "Hey"
+        },
+        {
+          "text": "Hiii"
+        },
+        {
+          "text": "What's up?"
+        },
+        {
+          "text": "Yo"
+        }
+      ],
+      "description": "Different ways to greet the bot"
+    },
+    {
+      "intent": "order_snacks",
+      "examples": [
+        {
+          "text": "I want to order cool drinks"
+        },
+        {
+          "text": "I want to order Samosa"
+        },
+        {
+          "text": "Order Pop corn"
+        }
+      ],
+      "description": "Different ways of food snacks.."
+    },
+    {
+      "intent": "thankyou",
+      "examples": [
+        {
+          "text": "Great, thanks"
+        },
+        {
+          "text": "Thanks!"
+        },
+        {
+          "text": "Thanks a lot"
+        },
+        {
+          "text": "thanks you so much"
+        },
+        {
+          "text": "Thank you"
+        }
+      ],
+      "description": "Thank the bot for accomplishing the task"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "movie",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "movie",
+          "synonyms": [
+            "cinema",
+            "film",
+            "movies"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "movie-name",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Spider-Man: Homecoming",
+          "synonyms": [
+            "Spiderman",
+            "Spider-Man",
+            "Spider-Man 3"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Star Wars:The Last Jedi",
+          "synonyms": [
+            "Star Wars",
+            "Star Wars:Force Awakens"
+          ]
+        }
+      ],
+      "fuzzy_match": false
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    },
+    {
+      "entity": "vijayawada-cinema",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "inox Cinemas",
+          "synonyms": [
+            "cinema in gandhi nagar",
+            "Cinema in multiplex",
+            "gandhi nagar cinema hall",
+            "inox",
+            "inox cinema"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "PVP square mall",
+          "synonyms": [
+            "Bundar road cinema",
+            "DTS sound Track",
+            "PVP",
+            "Reel Cinemas in PVP Mall",
+            "Shopping mall cum cinema hall"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Raj Yuvaraj",
+          "synonyms": [
+            "5 show cinema hall",
+            "Less Ticket Cinema Hall",
+            "No AC hall",
+            "raj",
+            "rajyuvaraj",
+            "yuvaraj"
+          ]
+        }
+      ],
+      "fuzzy_match": false
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_10_1522765181798",
+      "context": {
+        "moviedate": "@sys-date"
+      },
+      "metadata": {},
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_11_1522765181798"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter preferred date of booking"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1522765181798",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_12_1522765181798",
+      "previous_sibling": "handler_11_1522765181798"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_13_1522765211766",
+      "context": {
+        "seats": "@sys-number"
+      },
+      "metadata": {},
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_14_1522765211766"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "How many movie tickets should I book?"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_13_1522765211766",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_15_1522765211766",
+      "previous_sibling": "handler_14_1522765211766"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_16_1522765353728",
+      "context": {
+        "movietime": "@sys-time"
+      },
+      "metadata": {},
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_17_1522765353729"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter preferred time of booking"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_16_1522765353728",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_18_1522765353729",
+      "previous_sibling": "handler_17_1522765353729"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1522764649788",
+      "event_name": "nomatch",
+      "dialog_node": "handler_26_1522765982727",
+      "previous_sibling": "handler_44_1522769594673"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "There are only 2 movies available (Spider-Man: Homecoming and Star Wars:The Last Jedi). Please enter the name you would like to watch"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1522764649788",
+      "event_name": "nomatch",
+      "dialog_node": "handler_44_1522769594673",
+      "previous_sibling": "handler_5_1522764649788"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1522764649788",
+      "context": {
+        "moviename": "@movie-name"
+      },
+      "metadata": {},
+      "conditions": "@movie-name",
+      "event_name": "input",
+      "dialog_node": "handler_5_1522764649788",
+      "previous_sibling": "handler_6_1522764649788"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "There are only 2 movies available (Spider-Man: Homecoming and Star Wars:The Last Jedi). Please enter the name of the movie you would like to watch"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1522764649788",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_6_1522764649788"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1522765083038",
+      "context": {
+        "movielocation": "@vijayawada-cinema"
+      },
+      "metadata": {},
+      "conditions": "@vijayawada-cinema",
+      "event_name": "input",
+      "dialog_node": "handler_8_1522765083038"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter the Theatre Name of your preference in Vijayawada"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1522765083038",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_9_1522765083038",
+      "previous_sibling": "handler_8_1522765083038"
+    },
+    {
+      "type": "standard",
+      "title": "Greetings",
+      "output": {
+        "text": {
+          "values": [
+            "How can I help you? I can help you book movie tickets in Vijayawada Area"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "#greeting",
+      "dialog_node": "node_1_1522764255726",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Thank You",
+      "output": {
+        "text": {
+          "values": [
+            "You are welcome",
+            "My pleasure!",
+            "Welcome!"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "metadata": {},
+      "conditions": "#thankyou",
+      "dialog_node": "node_19_1522765467834",
+      "previous_sibling": "node_3_1522764528466"
+    },
+    {
+      "type": "frame",
+      "title": "Movie Booking Details",
+      "output": {
+        "text": {
+          "values": [
+            "Thank you. Your request for booking seats for the $moviename movie on $moviedate at $movietime for $seats people at $movielocation has been completed. Tickets will be send to you soon."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#book_tickets",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1522764528466",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_1_1522764255726",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "text": {
+          "values": [
+            "I didn't understand. You can try rephrasing.",
+            "Can you reword your statement? I'm not understanding.",
+            "I didn't get your meaning."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "node_47_1522770341115",
+      "previous_sibling": "node_19_1522765467834"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_3_1522764528466",
+      "metadata": {},
+      "variable": "$moviedate",
+      "dialog_node": "slot_10_1522765181798",
+      "previous_sibling": "slot_7_1522765083038"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_3_1522764528466",
+      "metadata": {},
+      "variable": "$seats",
+      "dialog_node": "slot_13_1522765211766",
+      "previous_sibling": "slot_16_1522765353728"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_3_1522764528466",
+      "metadata": {},
+      "variable": "$movietime",
+      "dialog_node": "slot_16_1522765353728",
+      "previous_sibling": "slot_10_1522765181798"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_3_1522764528466",
+      "metadata": {},
+      "variable": "$moviename",
+      "dialog_node": "slot_4_1522764649788"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_3_1522764528466",
+      "metadata": {},
+      "variable": "$movielocation",
+      "dialog_node": "slot_7_1522765083038",
+      "previous_sibling": "slot_4_1522764649788"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "text": {
+          "values": [
+            "Hello.",
+            "Hi!!",
+            "Greetings"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "learning_opt_out": false,
+  "name": "Simple Movie Ticket Booking Bot",
+  "language": "en",
+  "description": ""
+}
